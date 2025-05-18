@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\RequetesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,3 +41,10 @@ Route::get('/contact', function () {
 Route::get('/inscription-utilisateur', function () {
     return view('inscription-utilisateur');
 });
+
+
+Route::get('/', [ArticlesController::class, 'index']);
+Route::get('/articles/{id}', [ArticlesController::class, 'single']);
+
+Route::get('/requetes', [RequetesController::class, 'index']);
+Route::post('/articles/valider', [ArticlesController::class, 'valider'])->name('articles.valider');
